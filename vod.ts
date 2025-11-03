@@ -1,9 +1,3 @@
-import { writeFileSync } from 'fs'
-import { join } from 'path'
-import { getAvailableCategoryWithCfg } from "./vod_utils"
-import { req } from "utils"
-
-const vods = <Iconfig[]>[
   {
     id: "niuniuziyuan",
     name: "牛牛视频",
@@ -96,8 +90,7 @@ const vods = <Iconfig[]>[
     extra: {
       gfw: false,
     },
-  },];
-const nsfwVods: Iconfig[] = [
+  },
   {
     id: "Xxibaoziyuan",
     name: "X细胞资源",
@@ -119,13 +112,3 @@ const nsfwVods: Iconfig[] = [
     },
   },
 ] 
-// from args context
-const args = process.argv.slice(2)
-const vodFile = args[0]
-const nsfwVodFile = args[1]
-const file1 = join(process.cwd(), vodFile)
-const file2 = join(process.cwd(), nsfwVodFile);
-
-(async () => {
-  writeFileSync(file1, JSON.stringify(vods, null, 2))
-  writeFileSync(file2, JSON.stringify(nsfwVods, null, 2))
